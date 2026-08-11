@@ -98,4 +98,10 @@ export class SignUp {
   get password()        { return this.signUpForm.get('password'); }
   get confirmPassword() { return this.signUpForm.get('confirmPassword'); }
   get terms()           { return this.signUpForm.get('terms'); }
+
+  get pwLengthMet():    boolean { const v = this.password?.value ?? ''; return v.length >= 8; }
+  get pwUpperMet():     boolean { return /[A-Z]/.test(this.password?.value ?? ''); }
+  get pwLowerMet():     boolean { return /[a-z]/.test(this.password?.value ?? ''); }
+  get pwNumberMet():    boolean { return /\d/.test(this.password?.value ?? ''); }
+  get pwSpecialMet():   boolean { return /[@$!%*?&]/.test(this.password?.value ?? ''); }
 }

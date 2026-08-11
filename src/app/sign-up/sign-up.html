@@ -159,11 +159,11 @@
       <div class="password-hint">
         <span class="hint-label">Password must contain:</span>
         <ul class="hint-list">
-          <li [class.met]="!password?.hasError('minlength') && password?.value?.length >= 8">At least 8 characters</li>
-          <li [class.met]="password?.value && /[A-Z]/.test(password.value)">One uppercase letter</li>
-          <li [class.met]="password?.value && /[a-z]/.test(password.value)">One lowercase letter</li>
-          <li [class.met]="password?.value && /\d/.test(password.value)">One number</li>
-          <li [class.met]="password?.value && /[@$!%*?&]/.test(password.value)">One special character (@$!%*?&)</li>
+          <li [class.met]="pwLengthMet">At least 8 characters</li>
+          <li [class.met]="pwUpperMet">One uppercase letter</li>
+          <li [class.met]="pwLowerMet">One lowercase letter</li>
+          <li [class.met]="pwNumberMet">One number</li>
+          <li [class.met]="pwSpecialMet">One special character (@$!%*?&)</li>
         </ul>
       </div>
 
