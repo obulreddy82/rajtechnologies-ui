@@ -1,0 +1,449 @@
+/* contact-us.css */
+
+
+/* Fix width calculation */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+:host {
+  display: block;
+  font-family: "Segoe UI", Inter, Arial, sans-serif;
+  color: #1f2937;
+}
+
+
+/* Main container */
+.container {
+
+  width: 100%;
+  max-width: 900px;
+
+  margin: 40px auto;
+
+  padding: 35px 40px;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.08);
+
+}
+
+
+/* Header */
+.header-banner {
+
+  border-left: 5px solid #0052cc;
+
+  padding-left: 18px;
+
+  margin-bottom: 35px;
+
+}
+
+
+.header-banner h1 {
+
+  margin: 0 0 10px;
+
+  font-size: 30px;
+
+  font-weight: 700;
+
+  color: #0f2d59;
+
+}
+
+
+.header-banner p {
+
+  margin: 0;
+
+  max-width: 750px;
+
+  color: #64748b;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+}
+
+
+
+/* Section headings */
+.section-title {
+
+  margin: 25px 0 18px;
+
+  padding-bottom: 8px;
+
+  border-bottom: 1px solid #e2e8f0;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #0f2d59;
+
+}
+
+
+
+/* Row layout */
+.form-row {
+
+  display: flex;
+
+  width: 100%;
+
+  gap: 20px;
+
+}
+
+
+.form-col {
+
+  flex: 1;
+
+  min-width: 0;
+
+}
+
+
+
+/* Form groups */
+.form-group {
+
+  margin-bottom: 18px;
+
+}
+
+
+
+/* Labels */
+label {
+
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 13.5px;
+
+  font-weight: 600;
+
+  color: #334155;
+
+}
+
+
+.required {
+
+  color: #dc2626;
+
+}
+
+
+
+/* Inputs */
+input,
+select,
+textarea {
+
+
+  width: 100%;
+
+  max-width: 100%;
+
+  padding: 10px 12px;
+
+  border-radius: 6px;
+
+  border: 1px solid #cbd5e1;
+
+  background: #ffffff;
+
+  color: #1e293b;
+
+  font-size: 14px;
+
+  font-family: inherit;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease;
+
+
+}
+
+
+
+input,
+select {
+
+  height: 42px;
+
+}
+
+
+
+/* Placeholder */
+input::placeholder,
+textarea::placeholder {
+
+  color: #94a3b8;
+
+}
+
+
+
+/* Focus */
+input:focus,
+select:focus,
+textarea:focus {
+
+  outline: none;
+
+  border-color: #0052cc;
+
+  box-shadow:
+    0 0 0 3px rgba(0,82,204,.12);
+
+}
+
+
+
+/* Text area */
+textarea {
+
+  min-height: 120px;
+
+  resize: vertical;
+
+  line-height: 1.5;
+
+}
+
+
+
+/* Checkbox area */
+.checkbox-group {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 12px;
+
+}
+
+
+
+.checkbox-item {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  transition:
+
+    background .2s ease,
+
+    border-color .2s ease;
+
+}
+
+
+
+.checkbox-item:hover {
+
+  background: #eff6ff;
+
+  border-color: #93c5fd;
+
+}
+
+
+
+.checkbox-item input {
+
+  width: auto;
+
+  height: auto;
+
+  accent-color: #0052cc;
+
+}
+
+
+
+/* Validation messages */
+.error {
+
+  display: block;
+
+  margin-top: 5px;
+
+  color: #dc2626;
+
+  font-size: 12.5px;
+
+  font-weight: 500;
+
+}
+
+
+
+/* Invalid fields */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+
+  border-color: #dc2626;
+
+}
+
+
+
+/* Submit button */
+.submit-btn {
+
+  margin-top: 15px;
+
+  padding: 12px 28px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #0052cc,
+      #003d99
+    );
+
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+
+  transition:
+
+    transform .2s ease,
+
+    box-shadow .2s ease;
+
+}
+
+
+
+.submit-btn:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+
+    0 8px 18px rgba(0,82,204,.25);
+
+}
+
+
+
+/* Privacy */
+.privacy-notice {
+
+  margin-top: 30px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid #e2e8f0;
+
+  color: #64748b;
+
+  font-size: 12.5px;
+
+  line-height: 1.6;
+
+}
+
+
+.privacy-notice strong {
+
+  color: #334155;
+
+}
+
+
+
+/* Responsive */
+@media(max-width: 768px) {
+
+
+  .container {
+
+    margin: 20px;
+
+    padding: 25px 20px;
+
+  }
+
+
+  .header-banner h1 {
+
+    font-size: 24px;
+
+  }
+
+
+  .form-row {
+
+    flex-direction: column;
+
+    gap: 0;
+
+  }
+
+
+  .checkbox-group {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .submit-btn {
+
+    width: 100%;
+
+  }
+
+}

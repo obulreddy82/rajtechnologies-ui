@@ -1,0 +1,23 @@
+.body{
+  display:flex;
+  height:calc(100vh - 130px);
+}
+
+.sidebar{
+  width:220px;
+  background:#eeeeee;
+  padding:20px;
+}
+
+.sidebar ul{
+  list-style:none;
+}
+
+.sidebar li{
+  margin:15px 0;
+}
+
+.main{
+  flex:1;
+  padding:30px;
+}

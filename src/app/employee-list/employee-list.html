@@ -1,0 +1,36 @@
+<div class="container">
+    <h1>Employees List</h1>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Website</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (employee of employees | async; track employee) {
+          <tr>
+            <th scope="row">{{ employee.id }}</th>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.phone }}</td>
+            <td>{{ employee.website }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    <table>
+      <tr>
+          Search Text : <input type="text" id="search"/>
+      </tr>
+    </table>
+  <table>
+    <tr>
+      Increment Value : <button (click)="increment()">Increment</button>
+    </tr>
+  </table>
+
+</div>

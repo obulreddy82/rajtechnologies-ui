@@ -1,0 +1,14 @@
+footer{
+
+  height:60px;
+
+  background:#222;
+
+  color:white;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+}

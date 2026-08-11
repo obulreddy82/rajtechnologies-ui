@@ -1,0 +1,195 @@
+<div class="page-wrapper">
+  <div class="container">
+
+    <!-- Brand / Logo -->
+    <div class="brand">
+      <div class="brand-icon">RT</div>
+      <div class="brand-text">
+        <span class="brand-name">Raj Technologies</span>
+        <span class="brand-tagline">Consultancy &amp; Solutions</span>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header-banner">
+      <h1>Create Your Account</h1>
+      <p>
+        Join Raj Technologies and get access to our consultancy portal.
+        Fill in your details to get started.
+      </p>
+    </div>
+
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" novalidate>
+
+      <!-- Personal Information -->
+      <h2 class="section-title">Personal Information</h2>
+
+      <div class="form-row">
+        <div class="form-col">
+          <div class="form-group">
+            <label for="firstName">First Name <span class="required">*</span></label>
+            <input id="firstName" type="text" formControlName="firstName" placeholder="John">
+            @if (firstName?.hasError('required') && firstName?.touched) {
+              <small class="error">First name is required.</small>
+            }
+            @if (firstName?.hasError('minlength') && firstName?.touched) {
+              <small class="error">Must be at least 2 characters.</small>
+            }
+          </div>
+        </div>
+
+        <div class="form-col">
+          <div class="form-group">
+            <label for="lastName">Last Name <span class="required">*</span></label>
+            <input id="lastName" type="text" formControlName="lastName" placeholder="Doe">
+            @if (lastName?.hasError('required') && lastName?.touched) {
+              <small class="error">Last name is required.</small>
+            }
+            @if (lastName?.hasError('minlength') && lastName?.touched) {
+              <small class="error">Must be at least 2 characters.</small>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-col">
+          <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input id="email" type="email" formControlName="email" placeholder="john.doe@company.com">
+            @if (email?.hasError('required') && email?.touched) {
+              <small class="error">Email address is required.</small>
+            }
+            @if (email?.hasError('email') && email?.touched) {
+              <small class="error">Enter a valid email address.</small>
+            }
+          </div>
+        </div>
+
+        <div class="form-col">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input id="phone" type="tel" formControlName="phone" placeholder="+32 123 456 789">
+            @if (phone?.hasError('pattern') && phone?.touched) {
+              <small class="error">Enter a valid phone number.</small>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Professional Details -->
+      <h2 class="section-title">Professional Details</h2>
+
+      <div class="form-row">
+        <div class="form-col">
+          <div class="form-group">
+            <label for="role">Role / Position <span class="required">*</span></label>
+            <select id="role" formControlName="role">
+              @for (opt of roleOptions; track opt.value) {
+                <option [value]="opt.value" [disabled]="opt.value === ''">{{ opt.label }}</option>
+              }
+            </select>
+            @if (role?.hasError('required') && role?.touched) {
+              <small class="error">Please select your role.</small>
+            }
+          </div>
+        </div>
+
+        <div class="form-col">
+          <div class="form-group">
+            <label for="company">Company / Organisation</label>
+            <input id="company" type="text" formControlName="company" placeholder="ABC Technologies Ltd.">
+          </div>
+        </div>
+      </div>
+
+      <!-- Security -->
+      <h2 class="section-title">Account Security</h2>
+
+      <div class="form-row">
+        <div class="form-col">
+          <div class="form-group">
+            <label for="password">Password <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <input
+                id="password"
+                [type]="showPassword ? 'text' : 'password'"
+                formControlName="password"
+                placeholder="Min. 8 characters">
+              <button type="button" class="toggle-pw" (click)="togglePassword()" aria-label="Toggle password visibility">
+                {{ showPassword ? '🙈' : '👁' }}
+              </button>
+            </div>
+            @if (password?.hasError('required') && password?.touched) {
+              <small class="error">Password is required.</small>
+            }
+            @if (password?.hasError('minlength') && password?.touched) {
+              <small class="error">Password must be at least 8 characters.</small>
+            }
+            @if (password?.hasError('pattern') && password?.touched) {
+              <small class="error">Must include uppercase, lowercase, number, and special character.</small>
+            }
+          </div>
+        </div>
+
+        <div class="form-col">
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <input
+                id="confirmPassword"
+                [type]="showConfirmPassword ? 'text' : 'password'"
+                formControlName="confirmPassword"
+                placeholder="Re-enter your password">
+              <button type="button" class="toggle-pw" (click)="toggleConfirmPassword()" aria-label="Toggle confirm password visibility">
+                {{ showConfirmPassword ? '🙈' : '👁' }}
+              </button>
+            </div>
+            @if (confirmPassword?.hasError('required') && confirmPassword?.touched) {
+              <small class="error">Please confirm your password.</small>
+            }
+            @if (signUpForm.hasError('passwordMismatch') && confirmPassword?.touched) {
+              <small class="error">Passwords do not match.</small>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Password strength hint -->
+      <div class="password-hint">
+        <span class="hint-label">Password must contain:</span>
+        <ul class="hint-list">
+          <li [class.met]="!password?.hasError('minlength') && password?.value?.length >= 8">At least 8 characters</li>
+          <li [class.met]="password?.value && /[A-Z]/.test(password.value)">One uppercase letter</li>
+          <li [class.met]="password?.value && /[a-z]/.test(password.value)">One lowercase letter</li>
+          <li [class.met]="password?.value && /\d/.test(password.value)">One number</li>
+          <li [class.met]="password?.value && /[@$!%*?&]/.test(password.value)">One special character (@$!%*?&)</li>
+        </ul>
+      </div>
+
+      <!-- Terms -->
+      <div class="form-group terms-group">
+        <label class="checkbox-item">
+          <input type="checkbox" formControlName="terms">
+          I agree to the
+          <a href="#" class="link">Terms of Service</a>
+          and
+          <a href="#" class="link">Privacy Policy</a>
+          of Raj Technologies.
+        </label>
+        @if (terms?.hasError('required') && terms?.touched) {
+          <small class="error">You must accept the terms to continue.</small>
+        }
+      </div>
+
+      <button class="submit-btn" type="submit">Create Account</button>
+
+      <p class="login-link">
+        Already have an account?
+        <a routerLink="/login" class="link">Sign in</a>
+      </p>
+
+    </form>
+
+  </div>
+</div>
