@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +9,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './header.css',
   standalone: true,
 })
-export class Header {}
+export class Header {
+  readonly auth = inject(AuthService);
+}

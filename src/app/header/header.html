@@ -4,21 +4,18 @@
     <div class="cname"><h2>Raj Technologies</h2></div>
     <div class="menu">
       <nav>
-        <!--    <div id="menu">-->
-        <!--      <ul>-->
         <a routerLink="/">Home</a>
         <a routerLink="/employee-list">Employees</a>
         <a routerLink="/about-us">About Us</a>
         <a routerLink="/contact-us">Contact Us</a>
-        <a routerLink="/sign-up">Sign Up</a>
-        <!--        <li class="active"><a href="#">Home</a></li>-->
-        <!--        <li><a routerLink="/employee-list">Employees</a></li>-->
-        <!--        <li><a routerLink="/about-us">About Us</a></li>-->
-        <!--        &lt;!&ndash; <li><a href="#">Our Products</a></li>-->
-        <!--        <li><a href="#">Careers</a></li> &ndash;&gt;-->
-        <!--        <li><a routerLink="/contact-us">Contact Us</a></li>-->
-        <!--      </ul>-->
-        <!--    </div>-->
+
+        @if (auth.isLoggedIn()) {
+          <a routerLink="/profile">My Profile</a>
+          <a routerLink="/sign-out">Sign Out</a>
+        } @else {
+          <a routerLink="/sign-up">Sign Up</a>
+          <a routerLink="/sign-in">Sign In</a>
+        }
       </nav>
     </div>
   </div>

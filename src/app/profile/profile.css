@@ -1,0 +1,164 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+  font-family: "Segoe UI", Inter, Arial, sans-serif;
+  color: #1f2937;
+}
+
+.page-wrapper {
+  padding: 24px 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px 44px;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.1);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.brand-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0052cc, #003d99);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.5px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f2d59;
+  line-height: 1.2;
+}
+
+.brand-tagline {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.header-banner {
+  border-left: 5px solid #0052cc;
+  padding-left: 18px;
+  margin-bottom: 28px;
+}
+
+.header-banner h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f2d59;
+}
+
+.header-banner p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.profile-field {
+  padding: 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.value {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f2d59;
+  word-break: break-word;
+}
+
+.actions {
+  margin-top: 28px;
+}
+
+.signout-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0052cc, #003d99);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.signout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 82, 204, 0.28);
+}
+
+.empty {
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.link {
+  color: #0052cc;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 28px 20px;
+  }
+
+  .header-banner h1 {
+    font-size: 22px;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}

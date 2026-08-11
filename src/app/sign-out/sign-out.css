@@ -1,0 +1,105 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+  font-family: "Segoe UI", Inter, Arial, sans-serif;
+  color: #1f2937;
+}
+
+.page-wrapper {
+  padding: 24px 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px 44px;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.1);
+  text-align: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.brand-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0052cc, #003d99);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f2d59;
+}
+
+.brand-tagline {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.header-banner {
+  border-left: 5px solid #0052cc;
+  padding-left: 18px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.header-banner h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f2d59;
+}
+
+.header-banner p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14.5px;
+}
+
+.message {
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.submit-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0052cc, #003d99);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.submit-btn:hover {
+  box-shadow: 0 8px 20px rgba(0, 82, 204, 0.28);
+}

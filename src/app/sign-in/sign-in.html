@@ -1,0 +1,83 @@
+<div class="page-wrapper">
+  <div class="container">
+
+    <div class="brand">
+      <div class="brand-icon">RT</div>
+      <div class="brand-text">
+        <span class="brand-name">Raj Technologies</span>
+        <span class="brand-tagline">Consultancy &amp; Solutions</span>
+      </div>
+    </div>
+
+    <div class="header-banner">
+      <h1>Sign In</h1>
+      <p>
+        Welcome back. Sign in to access your consultancy portal account.
+      </p>
+    </div>
+
+    <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" novalidate>
+
+      <div class="form-group">
+        <label for="email">Email Address <span class="required">*</span></label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="john.doe@company.com"
+          autocomplete="email">
+        @if (email?.hasError('required') && email?.touched) {
+          <small class="error">Email address is required.</small>
+        }
+        @if (email?.hasError('email') && email?.touched) {
+          <small class="error">Enter a valid email address.</small>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password <span class="required">*</span></label>
+        <div class="input-wrapper">
+          <input
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="Enter your password"
+            autocomplete="current-password">
+          <button
+            type="button"
+            class="toggle-pw"
+            (click)="togglePassword()"
+            aria-label="Toggle password visibility">
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+        @if (password?.hasError('required') && password?.touched) {
+          <small class="error">Password is required.</small>
+        }
+      </div>
+
+      <div class="form-options">
+        <label class="checkbox-item">
+          <input type="checkbox" formControlName="rememberMe">
+          Remember me
+        </label>
+        <a href="#" class="link">Forgot password?</a>
+      </div>
+
+      @if (errorMessage) {
+        <div class="alert alert-error">{{ errorMessage }}</div>
+      }
+
+      <button class="submit-btn" type="submit" [disabled]="loading">
+        {{ loading ? 'Signing in...' : 'Sign In' }}
+      </button>
+
+      <p class="login-link">
+        Don't have an account?
+        <a routerLink="/sign-up" class="link">Create account</a>
+      </p>
+
+    </form>
+
+  </div>
+</div>

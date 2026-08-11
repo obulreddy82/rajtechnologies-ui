@@ -1,0 +1,54 @@
+<div class="page-wrapper">
+  <div class="container">
+
+    <div class="brand">
+      <div class="brand-icon">RT</div>
+      <div class="brand-text">
+        <span class="brand-name">Raj Technologies</span>
+        <span class="brand-tagline">Consultancy &amp; Solutions</span>
+      </div>
+    </div>
+
+    <div class="header-banner">
+      <h1>Personal Information</h1>
+      <p>Your account details from Raj Technologies consultancy portal.</p>
+    </div>
+
+    @if (user(); as profile) {
+      <div class="profile-grid">
+        <div class="profile-field">
+          <span class="label">First Name</span>
+          <span class="value">{{ profile.firstName }}</span>
+        </div>
+        <div class="profile-field">
+          <span class="label">Last Name</span>
+          <span class="value">{{ profile.lastName }}</span>
+        </div>
+        <div class="profile-field">
+          <span class="label">Email</span>
+          <span class="value">{{ profile.email }}</span>
+        </div>
+        <div class="profile-field">
+          <span class="label">Phone</span>
+          <span class="value">{{ profile.phone || '—' }}</span>
+        </div>
+        <div class="profile-field">
+          <span class="label">Role</span>
+          <span class="value">{{ formatRole(profile.role) }}</span>
+        </div>
+        <div class="profile-field">
+          <span class="label">Company</span>
+          <span class="value">{{ profile.company || '—' }}</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a routerLink="/sign-out" class="signout-btn">Sign Out</a>
+      </div>
+    } @else {
+      <p class="empty">No profile data available. Please sign in again.</p>
+      <a routerLink="/sign-in" class="link">Go to Sign In</a>
+    }
+
+  </div>
+</div>
