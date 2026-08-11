@@ -11,17 +11,13 @@
 }
 
 .page-wrapper {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f0f9ff 100%);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 40px 16px;
+  padding: 24px 16px;
 }
 
 .container {
   width: 100%;
   max-width: 780px;
+  margin: 0 auto;
   background: #ffffff;
   border-radius: 16px;
   padding: 40px 44px;
