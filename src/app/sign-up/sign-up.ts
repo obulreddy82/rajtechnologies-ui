@@ -8,6 +8,7 @@ import {
   Validators
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-up',
@@ -36,7 +37,10 @@ export class SignUp {
     { value: 'other', label: 'Other' }
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient
+  ) {
     this.signUpForm = this.fb.group(
       {
         firstName: ['', [Validators.required, Validators.minLength(2)]],
@@ -83,10 +87,17 @@ export class SignUp {
     }
 
     const { confirmPassword, terms, ...payload } = this.signUpForm.value;
-    console.log('Sign-Up Payload:', payload);
 
-    // TODO: call backend API
-    // this.http.post('http://localhost:8090/api/v1/auth/register', payload).subscribe(...)
+    this.http.post('http://localhost:8070/api/v1/signup', payload, { responseType: 'text' }).subscribe({
+      next: (response) => {
+        console.log('Sign-up successful:', response);
+        this.signUpForm.reset();
+        this.submitted = false;
+      },
+      error: (error) => {
+        console.error('Sign-up failed:', error);
+      }
+    });
   }
 
   get firstName()       { return this.signUpForm.get('firstName'); }
