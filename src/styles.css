@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --rt-navy: #0b1f3a;
+  --rt-blue: #0052cc;
+  --rt-blue-dark: #003d99;
+  --rt-sky: #e8f0fe;
+  --rt-slate: #64748b;
+  --rt-ink: #1e293b;
+  --rt-border: #dbe3f0;
+  --rt-surface: #ffffff;
+  --rt-font: "Manrope", "Segoe UI", sans-serif;
+  --rt-display: "Source Serif 4", Georgia, serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--rt-font);
+  color: var(--rt-ink);
+  background: #f5f8fc;
+}

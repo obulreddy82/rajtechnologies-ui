@@ -1,22 +1,46 @@
-<header>
-  <div>
-    <div class="logo"></div>
-    <div class="cname"><h2>Raj Technologies</h2></div>
-    <div class="menu">
-      <nav>
-        <a routerLink="/">Home</a>
-        <a routerLink="/employee-list">Employees</a>
-        <a routerLink="/about-us">About Us</a>
-        <a routerLink="/contact-us">Contact Us</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a routerLink="/" class="brand" (click)="closeMenu()" aria-label="Raj Technologies home">
+      <span class="logo-mark" aria-hidden="true">
+        <span class="logo-rt">RT</span>
+      </span>
+      <span class="brand-copy">
+        <span class="brand-name">Raj Technologies</span>
+        <span class="brand-tag">Consultancy &amp; Solutions</span>
+      </span>
+    </a>
 
-        @if (auth.isLoggedIn()) {
-          <a routerLink="/profile">My Profile</a>
-          <a routerLink="/sign-out">Sign Out</a>
-        } @else {
-          <a routerLink="/sign-up">Sign Up</a>
-          <a routerLink="/sign-in">Sign In</a>
-        }
-      </nav>
-    </div>
+    <button
+      type="button"
+      class="menu-toggle"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="primary-nav"
+      (click)="toggleMenu()">
+      <span class="sr-only">Menu</span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <nav
+      id="primary-nav"
+      class="nav"
+      [class.open]="menuOpen()"
+      (click)="closeMenu()">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/employee-list" routerLinkActive="active">Employees</a>
+      <a routerLink="/about-us" routerLinkActive="active">About Us</a>
+      <a routerLink="/contact-us" routerLinkActive="active">Contact Us</a>
+
+      <span class="nav-divider" aria-hidden="true"></span>
+
+      @if (auth.isLoggedIn()) {
+        <a routerLink="/profile" routerLinkActive="active">My Profile</a>
+        <a routerLink="/sign-out" class="btn-outline">Sign Out</a>
+      } @else {
+        <a routerLink="/sign-up" routerLinkActive="active">Sign Up</a>
+        <a routerLink="/sign-in" class="btn-primary" routerLinkActive="active">Sign In</a>
+      }
+    </nav>
   </div>
 </header>

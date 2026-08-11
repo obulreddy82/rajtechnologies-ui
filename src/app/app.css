@@ -13,5 +13,7 @@
 .content {
   flex: 1;
   padding: 24px;
-  background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f0f9ff 100%);
+  background:
+    radial-gradient(circle at top right, rgba(0, 82, 204, 0.08), transparent 28%),
+    linear-gradient(180deg, #f5f8fc 0%, #eef3fa 100%);
 }

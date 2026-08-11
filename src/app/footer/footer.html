@@ -1,5 +1,48 @@
-<footer>
+<footer class="site-footer">
+  <div class="footer-glow" aria-hidden="true"></div>
 
-  © 2026 My Angular SPA
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-row">
+        <span class="logo-mark" aria-hidden="true">
+          <span class="logo-rt">RT</span>
+        </span>
+        <div class="brand-copy">
+          <span class="brand-name">Raj Technologies</span>
+          <span class="brand-tag">Consultancy &amp; Solutions</span>
+        </div>
+      </div>
+      <p class="brand-blurb">
+        Enterprise software, cloud, architecture, and digital transformation
+        for teams that need reliable delivery.
+      </p>
+    </div>
 
+    <div class="footer-links">
+      <h3>Explore</h3>
+      <a routerLink="/">Home</a>
+      <a routerLink="/about-us">About Us</a>
+      <a routerLink="/employee-list">Employees</a>
+      <a routerLink="/contact-us">Contact Us</a>
+    </div>
+
+    <div class="footer-links">
+      <h3>Account</h3>
+      <a routerLink="/sign-in">Sign In</a>
+      <a routerLink="/sign-up">Sign Up</a>
+      <a routerLink="/profile">My Profile</a>
+    </div>
+
+    <div class="footer-contact">
+      <h3>Get in touch</h3>
+      <p>Belgium &amp; EU</p>
+      <a href="mailto:contact@rajtechnologies.com">contact@rajtechnologies.com</a>
+      <a routerLink="/contact-us" class="footer-cta">Request a consultation</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© {{ year }} Raj Technologies. All rights reserved.</p>
+    <p class="footer-note">Built for consultancy delivery excellence.</p>
+  </div>
 </footer>
