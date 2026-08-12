@@ -1,0 +1,73 @@
+<div class="page-wrapper">
+  <div class="container">
+    <div class="header-banner">
+      <h1>Add Consultancy Info</h1>
+      <p>
+        Add a single consultancy record manually and store it in the backend database.
+      </p>
+    </div>
+
+    <form class="form-card" (ngSubmit)="submit()">
+      <div class="grid">
+        <label class="field">
+          <span>Company Name</span>
+          <input
+            name="companyName"
+            [(ngModel)]="consultancy.companyName"
+            required />
+        </label>
+
+        <label class="field">
+          <span>Website</span>
+          <input name="website" [(ngModel)]="consultancy.website" />
+        </label>
+
+        <label class="field">
+          <span>Address</span>
+          <input name="address" [(ngModel)]="consultancy.address" />
+        </label>
+
+        <label class="field">
+          <span>Phone Number</span>
+          <input name="phoneNumber" [(ngModel)]="consultancy.phoneNumber" />
+        </label>
+
+        <label class="field grid-col-2">
+          <span>Career / Jobs Link</span>
+          <input
+            name="careerJobsLink"
+            [(ngModel)]="consultancy.careerJobsLink" />
+        </label>
+      </div>
+
+      <button class="submit-btn" type="submit" [disabled]="loading()">
+        {{ loading() ? 'Processing...' : 'Submit to Backend' }}
+      </button>
+    </form>
+
+    @if (loading()) {
+      <div class="upload-progress" role="status" aria-live="polite">
+        <div class="progress-track">
+          <span class="runner" aria-hidden="true">⏳</span>
+        </div>
+        <p>Storing consultancy information...</p>
+      </div>
+    }
+
+    @if (successMessage()) {
+      <div class="alert success">
+        <span class="success-icon">&#10004;</span>
+        {{ successMessage() }}
+      </div>
+    }
+    @if (errorMessage()) {
+      <div class="alert error">{{ errorMessage() }}</div>
+    }
+
+    <p class="footer-link">
+      Go to
+      <a routerLink="/consultancy-list" class="link">Consultancy List</a>
+      after submission.
+    </p>
+  </div>
+</div>

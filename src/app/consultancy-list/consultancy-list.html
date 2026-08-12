@@ -1,0 +1,90 @@
+<div class="page-wrapper">
+  <div class="container">
+
+    <div class="header-banner">
+      <h1>Consultancy List</h1>
+      <p>Search, sort, edit, update, and delete consultancy records from the database.</p>
+    </div>
+
+    <div class="toolbar">
+      <input
+        type="search"
+        class="search-input"
+        placeholder="Search by company, website, address, phone, or jobs link..."
+        [ngModel]="searchTerm()"
+        (ngModelChange)="onSearchChange($event)">
+
+      <button type="button" class="refresh-btn" (click)="loadConsultancies()">Refresh</button>
+      <a routerLink="/consultancy-upload" class="upload-link">Upload Excel</a>
+    </div>
+
+    @if (loading()) {
+      <p class="status">Loading consultancies...</p>
+    }
+
+    @if (successMessage()) {
+      <div class="alert success">{{ successMessage() }}</div>
+    }
+    @if (errorMessage()) {
+      <div class="alert error">{{ errorMessage() }}</div>
+    }
+
+    @if (!loading() && filteredConsultancies().length === 0) {
+      <p class="status">No consultancy records found.</p>
+    }
+
+    @if (filteredConsultancies().length > 0) {
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th (click)="toggleSort('companyName')">Company Name {{ sortLabel('companyName') }}</th>
+              <th (click)="toggleSort('website')">Website {{ sortLabel('website') }}</th>
+              <th (click)="toggleSort('address')">Address {{ sortLabel('address') }}</th>
+              <th (click)="toggleSort('phoneNumber')">Phone {{ sortLabel('phoneNumber') }}</th>
+              <th (click)="toggleSort('careerJobsLink')">Career Link {{ sortLabel('careerJobsLink') }}</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of filteredConsultancies(); track item.id) {
+              <tr [class.editing]="editingId() === item.id">
+                @if (editingId() === item.id && editDraft(); as draft) {
+                  <td><input [ngModel]="draft.companyName" (ngModelChange)="updateDraftField('companyName', $event)"></td>
+                  <td><input [ngModel]="draft.website" (ngModelChange)="updateDraftField('website', $event)"></td>
+                  <td><input [ngModel]="draft.address" (ngModelChange)="updateDraftField('address', $event)"></td>
+                  <td><input [ngModel]="draft.phoneNumber" (ngModelChange)="updateDraftField('phoneNumber', $event)"></td>
+                  <td><input [ngModel]="draft.careerJobsLink" (ngModelChange)="updateDraftField('careerJobsLink', $event)"></td>
+                  <td class="actions">
+                    <button type="button" class="btn update" (click)="updateConsultancy()">Update</button>
+                    <button type="button" class="btn cancel" (click)="cancelEdit()">Cancel</button>
+                  </td>
+                } @else {
+                  <td>{{ item.companyName }}</td>
+                  <td>
+                    @if (item.website) {
+                      <a [href]="item.website" target="_blank" rel="noopener">{{ item.website }}</a>
+                    }
+                  </td>
+                  <td>{{ item.address }}</td>
+                  <td>{{ item.phoneNumber }}</td>
+                  <td>
+                    @if (item.careerJobsLink) {
+                      <a [href]="item.careerJobsLink" target="_blank" rel="noopener">Jobs</a>
+                    }
+                  </td>
+                  <td class="actions">
+                    <button type="button" class="btn edit" (click)="startEdit(item)">Edit</button>
+                    <button type="button" class="btn update" (click)="startEdit(item)">Update</button>
+                    <button type="button" class="btn delete" (click)="deleteConsultancy(item)">Delete</button>
+                  </td>
+                }
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+
+  </div>
+</div>

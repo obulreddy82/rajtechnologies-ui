@@ -120,6 +120,81 @@
   background: #e8f0fe;
 }
 
+.nav-group {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-group-label {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--rt-slate, #64748b);
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  cursor: default;
+  user-select: none;
+}
+
+.nav-group:hover .nav-group-label {
+  background: #eef4ff;
+  color: var(--rt-blue, #0052cc);
+}
+
+/* Invisible bridge between the label and dropdown to prevent hover loss */
+.nav-group::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  display: none;
+}
+
+.nav-group:hover::after {
+  display: block;
+}
+
+.nav-submenu {
+  display: flex;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 220px;
+  padding: 0.5rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #e2ebf8;
+  box-shadow: 0 16px 32px rgba(11, 31, 58, 0.10);
+  z-index: 9999;
+  flex-direction: column;
+  gap: 0.15rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+}
+
+.nav-group:hover > .nav-submenu,
+.nav-group:focus-within > .nav-submenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.nav-submenu a {
+  display: block;
+  padding: 0.6rem 0.9rem !important;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.nav-submenu a:hover {
+  background: #eef4ff;
+  color: var(--rt-blue, #0052cc);
+}
+
 .nav-divider {
   width: 1px;
   height: 22px;
@@ -216,6 +291,32 @@
 
   .nav a {
     border-radius: 10px;
+  }
+
+  .nav-group {
+    width: 100%;
+    border-radius: 10px;
+    justify-content: flex-start;
+    padding: 0.2rem;
+  }
+
+  .nav-group-label {
+    padding-left: 0.45rem;
+  }
+
+  .nav-submenu {
+    display: flex;
+    position: static;
+    min-width: 0;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 0 0 0 0.45rem;
+    margin-top: -0.15rem;
+    gap: 0.25rem;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .brand-tag {

@@ -6,6 +6,9 @@ import { SignUp } from './sign-up/sign-up';
 import { SignIn } from './sign-in/sign-in';
 import { Profile } from './profile/profile';
 import { SignOut } from './sign-out/sign-out';
+import { ConsultancyUpload } from './consultancy-upload/consultancy-upload';
+import { ConsultancyList } from './consultancy-list/consultancy-list';
+import { ConsultancyAdd } from './consultancy-add/consultancy-add';
 import { authGuard, guestGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
@@ -46,5 +49,20 @@ export const routes: Routes = [
     path: 'sign-out',
     title: 'Sign Out',
     component: SignOut,
+  },
+  {
+    path: 'consultancy-upload',
+    title: 'Consultancy Upload',
+    component: ConsultancyUpload,
+  },
+  {
+    path: 'consultancy-list',
+    title: 'Consultancy List',
+    component: ConsultancyList,
+  },
+  {
+    path: 'consultancy-add',
+    title: 'Add Consultancy Info',
+    component: ConsultancyAdd,
   },
 ];

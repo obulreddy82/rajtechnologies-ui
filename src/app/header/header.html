@@ -26,20 +26,47 @@
       id="primary-nav"
       class="nav"
       [class.open]="menuOpen()"
-      (click)="closeMenu()">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-      <a routerLink="/employee-list" routerLinkActive="active">Employees</a>
-      <a routerLink="/about-us" routerLinkActive="active">About Us</a>
-      <a routerLink="/contact-us" routerLinkActive="active">Contact Us</a>
+      >
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMenu()">Home</a>
+      <a
+        routerLink="/employee-list"
+        routerLinkActive="active"
+        (click)="closeMenu()">Employees</a>
+      <div class="nav-group">
+        <span class="nav-group-label">Consultancy</span>
+        <div class="nav-submenu" role="menu" aria-label="Consultancy menu">
+          <a
+            routerLink="/consultancy-upload"
+            routerLinkActive="active"
+            role="menuitem"
+          >Upload</a>
+          <a
+            routerLink="/consultancy-list"
+            routerLinkActive="active"
+            role="menuitem"
+          >Consultancy List</a>
+          <a
+            routerLink="/consultancy-add"
+            routerLinkActive="active"
+            role="menuitem"
+          >Add consultancy info</a>
+        </div>
+      </div>
+      <a routerLink="/about-us" routerLinkActive="active" (click)="closeMenu()">About Us</a>
+      <a routerLink="/contact-us" routerLinkActive="active" (click)="closeMenu()">Contact Us</a>
 
       <span class="nav-divider" aria-hidden="true"></span>
 
       @if (auth.isLoggedIn()) {
-        <a routerLink="/profile" routerLinkActive="active">My Profile</a>
-        <a routerLink="/sign-out" class="btn-outline">Sign Out</a>
+        <a routerLink="/profile" routerLinkActive="active" (click)="closeMenu()">My Profile</a>
+        <a routerLink="/sign-out" class="btn-outline" (click)="closeMenu()">Sign Out</a>
       } @else {
-        <a routerLink="/sign-up" routerLinkActive="active">Sign Up</a>
-        <a routerLink="/sign-in" class="btn-primary" routerLinkActive="active">Sign In</a>
+        <a routerLink="/sign-up" routerLinkActive="active" (click)="closeMenu()">Sign Up</a>
+        <a routerLink="/sign-in" class="btn-primary" routerLinkActive="active" (click)="closeMenu()">Sign In</a>
       }
     </nav>
   </div>

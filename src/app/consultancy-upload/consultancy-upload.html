@@ -1,0 +1,111 @@
+<div class="page-wrapper">
+  <div class="container">
+
+    <div class="header-banner">
+      <h1>Upload Consultancies</h1>
+      <p>
+        Upload the Belgium IT consultancy Excel sheet. The file is read in the browser,
+        converted to JSON, and sent to the backend for storage.
+      </p>
+    </div>
+
+    <!-- Step 1: Choose file -->
+    <div class="upload-card">
+      <label class="file-label" for="excelFile">
+        <span class="file-icon">📄</span>
+        <span class="file-title">Choose Excel file (.xlsx)</span>
+        <span class="file-hint">Expected columns: Company Name, Website, Address, Phone Number, Career / Jobs Link</span>
+      </label>
+      <input
+        id="excelFile"
+        type="file"
+        accept=".xlsx,.xls"
+        (change)="onFileSelected($event)">
+
+      @if (selectedFileName()) {
+        <p class="selected-file">Selected: <strong>{{ selectedFileName() }}</strong></p>
+      }
+    </div>
+
+    <!-- Reading file spinner -->
+    @if (reading()) {
+      <div class="upload-progress" role="status" aria-live="polite">
+        <div class="progress-track">
+          <span class="runner" aria-hidden="true">📖</span>
+        </div>
+        <p>Reading Excel file, please wait...</p>
+      </div>
+    }
+
+    <!-- Step 2: Preview parsed data + Submit button -->
+    @if (parsedReady() && parsedRows().length) {
+      <div class="preview">
+        <h2>Preview ({{ parsedRows().length }} records from {{ parsedSheetCount() }} tab(s))</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Company Name</th>
+                <th>Website</th>
+                <th>Address</th>
+                <th>Phone Number</th>
+                <th>Career / Jobs Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (row of parsedRows(); track row.companyName) {
+                <tr>
+                  <td>{{ row.companyName }}</td>
+                  <td>{{ row.website }}</td>
+                  <td>{{ row.address }}</td>
+                  <td>{{ row.phoneNumber }}</td>
+                  <td>{{ row.careerJobsLink }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <button
+          class="submit-btn"
+          type="button"
+          [disabled]="loading()"
+          (click)="uploadToBackend()">
+          {{ loading() ? 'Submitting...' : 'Submit to Backend' }}
+        </button>
+      </div>
+    }
+
+    @if (parsedReady() && !parsedRows().length && !successMessage()) {
+      <p class="no-records">No valid consultancy records were found in the uploaded file.</p>
+    }
+
+    <!-- Step 3: Processing spinner (visible while uploading) -->
+    @if (loading()) {
+      <div class="upload-progress" role="status" aria-live="polite">
+        <div class="progress-track">
+          <span class="runner" aria-hidden="true">🚚</span>
+        </div>
+        <p>Uploading records to backend, please wait...</p>
+      </div>
+    }
+
+    <!-- Step 4: Response messages -->
+    @if (successMessage()) {
+      <div class="alert success">
+        <span class="success-icon">&#10004;</span>
+        {{ successMessage() }}
+      </div>
+    }
+    @if (errorMessage()) {
+      <div class="alert error">{{ errorMessage() }}</div>
+    }
+
+    <p class="footer-link">
+      View saved records on the
+      <a routerLink="/consultancy-list" class="link">Consultancy List</a> page.
+    </p>
+
+  </div>
+</div>
